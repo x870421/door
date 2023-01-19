@@ -1,7 +1,7 @@
 <template>
-  <div class="month-table-width" @keyup="keyupSelect">
+  <div class="month-table-width border-primary" @keyup="keyupSelect">
     <table
-      class="h-100 month-picker w-100 border border-primary bg-"
+      class="h-100 month-picker w-100"
       @mouseup="mouseUp"
       @mouseleave.stop="mouseUp"
     >
