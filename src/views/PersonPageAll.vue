@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex flex-wrap justify-content-between">
       <div>
         <a-button
           class="me-2 mb-2"
@@ -80,6 +80,7 @@
           :title="$t('cardID')"
           data-index="card_id"
           :ellipsis="true"
+          :responsive="['lg']"
         />
 
         <a-table-column
@@ -93,6 +94,7 @@
           key="created_since"
           :title="$t('startTime')"
           data-index="created_since"
+          :responsive="['lg']"
           :sorter="
             (a, b) =>
               dayjs(a.created_since, 'YYYY/MM/DD') -
@@ -101,6 +103,7 @@
         />
         <a-table-column
           :ellipsis="true"
+          :responsive="['md']"
           key="valid_till"
           :title="$t('endTime')"
           data-index="valid_till"
@@ -499,7 +502,6 @@ export default {
     },
 
     deleteAll () {
-      console.log(this.selectedRowKeys)
       Modal.confirm({
         title: this.$t('wannaDelete'),
         icon: createVNode(ExclamationCircleOutlined),

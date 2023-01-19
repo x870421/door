@@ -135,7 +135,7 @@
               { text: '加班開始', value: '5' },
               { text: '加班結束', value: '6' }
             ]"
-            :onFilter="record.shift_code === value"
+            :onFilter="(value, record) => record.shift_code === value"
           />
 
           <a-table-column
@@ -1049,7 +1049,6 @@ export default {
             i.shift_code_name = '加班結束'
             break
         }
-        console.log(i)
       })
       this.renderData = JSON.parse(JSON.stringify(this.loggers))
     }
