@@ -1,30 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <a-config-provider :locale="locale">
+    <router-view />
+  </a-config-provider>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import zhTW from 'ant-design-vue/es/locale/zh_TW'
+import enUS from 'ant-design-vue/es/locale/en_US'
+import 'dayjs/locale/zh-tw'
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data () {
+    return {
+      locale: zhTW,
+      date: ''
+    }
+  },
+  watch: {
+    '$i18n.locale': {
+      handler (newValue) {
+        switch (newValue) {
+          case 'en':
+            this.locale = enUS
+            break
+          case 'zh-TW':
+            this.locale = zhTW
+            break
+        }
+      },
+      immediate: true
     }
   }
 }
+</script>
+
+<style lang="scss">
+@import './assets/all.scss';
 </style>

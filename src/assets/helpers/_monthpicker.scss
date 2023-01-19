@@ -1,0 +1,75 @@
+.month-picker {
+  font-size: 12px;
+  user-select: none;
+  table-layout: fixed;
+  thead {
+    th {
+      color: #384893;
+      text-align: center;
+      line-height: 14px;
+      cursor: default;
+      background: #fff;
+      padding: 4px 0;
+    }
+  }
+  tbody {
+    tr {
+      height: 19.5px;
+      text-align: center;
+      th {
+        color: #384893;
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 13px;
+        padding: 4px 1px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      th.select {
+        border: 1px solid #384893;
+        border-block-color: #384893;
+      }
+
+      td {
+        padding: 3px 2px;
+        cursor: pointer;
+        line-height: 13px;
+      }
+      td.select {
+        background: #384893;
+        color: #fff;
+      }
+      td.empty {
+        cursor: default !important;
+      }
+    }
+  }
+}
+
+.month-table-width {
+  width: 153px;
+}
+
+@media (max-width: 500px) {
+  .month-table-width {
+    width: 180px;
+  }
+  .month-picker {
+    tbody {
+      tr {
+        th {
+          padding: 5px 0;
+        }
+        td {
+          padding: 6px 2px;
+          cursor: pointer;
+          line-height: 13px;
+        }
+        td.empty {
+          cursor: default !important;
+          height: 25px;
+        }
+      }
+    }
+  }
+}

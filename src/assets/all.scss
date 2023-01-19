@@ -1,0 +1,174 @@
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import './helpers/variables';
+@import '~bootstrap/scss/bootstrap';
+@import './helpers/sidebar';
+@import './helpers/timebar';
+@import './helpers/monthpicker';
+@import './helpers/rangeslider';
+[v-cloak] {
+  display: none;
+}
+
+$nav-primary: shift-color($primary, -45%);
+.bg-nav-primary {
+  background-color: $nav-primary;
+}
+.ant-card-head {
+  background-color: shift-color($primary, -25%) !important;
+}
+.ant-card-head-title {
+  color: white;
+}
+.ant-card {
+  position: initial !important;
+}
+img,
+svg {
+  vertical-align: baseline;
+}
+table > thead > tr > th {
+  background-color: #d9dcf0 !important;
+  user-select: none;
+}
+
+// .table-bg-primary {
+//   background-color: #d9dcf0 !important;
+// }
+
+.ant-tag {
+  border-radius: 1rem !important;
+}
+
+.ant-modal-header {
+  background: #384893 !important;
+}
+
+.ant-modal-title,
+.ant-modal-close-icon {
+  color: #fff !important;
+}
+.main-menu-inner {
+  max-height: 100vh;
+  overflow: hidden;
+}
+.main-menu:hover .main-menu-inner {
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .rwd-none {
+    display: none !important;
+  }
+}
+a {
+  color: #1da57a;
+  font-size: 14px;
+  text-decoration: none;
+}
+.setting-link {
+  color: #384893;
+  &:hover {
+    color: #384893;
+  }
+}
+// 門繼電器
+.relay-param-width {
+  width: 650px;
+}
+
+@media (max-width: 968px) {
+  .relay-param-width {
+    width: auto;
+  }
+  .sidebar-toggled {
+    .relay-param-width {
+      width: 650px;
+    }
+  }
+}
+@media (max-width: 577px) {
+  .sidebar-toggled {
+    .relay-param-width {
+      width: auto;
+    }
+  }
+}
+// 門IO
+.gate-io-width {
+  width: 670px;
+}
+@media (max-width: 868px) {
+  .gate-io-width {
+    width: auto;
+  }
+  .sidebar-toggled {
+    .gate-io-width {
+      width: 670px;
+    }
+  }
+}
+@media (max-width: 720px) {
+  .sidebar-toggled {
+    .gate-io-width {
+      width: auto;
+    }
+  }
+}
+
+// 索引
+.select_week_width {
+  width: calc(100% - 32px) !important;
+}
+// holiday
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #eee !important;
+}
+
+.year-table-width {
+  width: 640px;
+}
+.holiday-table-width {
+  width: 730px;
+}
+@media (max-width: 767px) {
+  .year-table-width {
+    width: 482px;
+  }
+  .holiday-table-width {
+    width: 572px;
+  }
+}
+
+@media (max-width: 575px) {
+  .year-table-width {
+    width: 322px;
+  }
+  .holiday-table-width {
+    width: 412px;
+  }
+}
+@media (max-width: 500px) {
+  .col-month-width {
+    width: 100%;
+  }
+  .year-table-width {
+    width: 200px;
+  }
+  .holiday-table-width {
+    width: 280px;
+  }
+}
+// 系統初始化
+.systeminit-margin {
+  margin-left: 2.5rem;
+  margin-bottom: 2rem;
+}
+.systeminit-width {
+  max-width: 500px;
+}
+@media (max-width: 575px) {
+  .systeminit-margin {
+    margin-left: auto;
+  }
+}
