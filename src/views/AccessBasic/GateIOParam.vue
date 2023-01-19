@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4" v-cloak>
+  <div class="p-sm-4 p-2" v-cloak>
     <div class="card shadow-sm">
       <a-spin :spinning="spinning" tip="Loading...">
         <a-form class="p-4 mx-auto gate-io-width" :model="door">

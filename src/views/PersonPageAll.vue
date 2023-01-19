@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-sm-4 p-2">
     <div class="d-flex flex-wrap justify-content-between">
       <div>
         <a-button

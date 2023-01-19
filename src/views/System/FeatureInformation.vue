@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-sm-4 p-2">
     <a-spin :spinning="spinning" tip="Loading...">
       <div class="card shadow-sm">
         <a-descriptions

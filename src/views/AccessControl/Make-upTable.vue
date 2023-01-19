@@ -63,7 +63,7 @@
           </a-dropdown>
         </div>
 
-        <div class="px-4 py-3">
+        <div class="p-sm-4 p-2">
           <div class="position-relative">
             <div
               class="position-absolute text-white d-flex align-items-center justify-content-center"
@@ -131,7 +131,7 @@
                 "
               />
               <a-table-column
-                :width="'18%'"
+                :width="'22%'"
                 class="text-nowrap table-bg-primary"
                 :title="$t('action')"
                 key="action"

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-sm-4 p-2">
     <a-card>
       <a-form :model="search" class="ant-advanced-search-form">
         <a-row :gutter="24">

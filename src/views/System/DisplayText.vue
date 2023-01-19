@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-sm-4 p-2">
     <div class="card shadow-sm">
       <a-form
         class="p-4"

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-sm-4 p-2">
     <a-upload :showUploadList="false" name="file" :customRequest="readFile">
       <a-button>
         <upload-outlined></upload-outlined>
