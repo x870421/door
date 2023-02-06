@@ -92,10 +92,10 @@ export default {
   methods: {
     exampleCSV () {
       const dataArr = [
-        'person_id,username,email,holiday_id,week_id,makeup_id,card_type,card_id,password_hash,authentication_type,created_since,valid_till',
-        '7275065026,秦哲瑋,Christopher_Jones76540d@tp.gov.tw,年休假,小夜班,正常班,88,57836545052426,,0,2023-01-06,2072-12-24',
-        '5590422543,楊雅筑,Rebecca_Mckinney50654d@acer.com,年休假,正常班,正常班,81,41863570849595,,0,2023-01-06,2072-12-24',
-        '9268567396,張哲瑋,Robert_Compton74589sd71@hotmail.com,年休假,正常班,正常班,81,4866540015871,,0,2023-01-06,2072-12-24'
+        'person_id,username,email,card_type,card_id,password_hash,authentication_type,created_since,valid_till',
+        '7275065026,秦哲瑋,Christopher_Jones76540d@tp.gov.tw,88,57836545052426,,0,2023-01-06,2072-12-24',
+        '5590422543,楊雅筑,Rebecca_Mckinney50654d@acer.com,81,41863570849595,,0,2023-01-06,2072-12-24',
+        '9268567396,張哲瑋,Robert_Compton74589sd71@hotmail.com,81,4866540015871,,0,2023-01-06,2072-12-24'
       ]
       const data = dataArr.join('\r\n')
       const downloadLink = document.createElement('a')
