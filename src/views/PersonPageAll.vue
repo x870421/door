@@ -513,6 +513,8 @@ export default {
             return !this.selectedRowKeys.includes(item.person_id)
           })
           this.renderData = JSON.parse(JSON.stringify(this.personData))
+          message.success(this.$t('delete') + this.$t('success'), 10)
+
         },
 
         onCancel () {}
