@@ -20,16 +20,6 @@
         <div v-if="showCopy" class="position-absolute" style="z-index: 50">
           <a-card size="small" style="width: 240px">
             <a-checkbox-group v-model:value="day">
-              <!-- :options="[
-                { label: $t('MON'), value: 'MON' },
-                { label: $t('TUE'), value: 'TUE' },
-                { label: $t('WED'), value: 'WED' },
-                { label: $t('THU'), value: 'THU' },
-                { label: $t('FRI'), value: 'FRI' },
-                { label: $t('SAT'), value: 'SAT' },
-                { label: $t('SUN'), value: 'SUN' },
-                { label: $t('HOL'), value: 'HOL' }
-              ]" -->
               <a-row>
                 <a-col
                   v-for="(item, index) in options"
@@ -92,7 +82,7 @@
                 shape="circle"
                 size="small"
                 @click="deleItem(sliderDay, index)"
-                title="刪除"
+                :title="$t('delete')"
               >
                 <template #icon><close-outlined /></template>
               </a-button>
@@ -148,7 +138,7 @@ export default {
 
       const last = sliderDay.length
       if (last === 8) {
-        alert('已達上限')
+        alert(this.$t('limitReached'))
         return
       }
       if (last !== 0) {
@@ -156,7 +146,7 @@ export default {
           sliderDay[last - 1].start === '' ||
           sliderDay[last - 1].end === ''
         ) {
-          alert('請先選擇上一組時間')
+          alert(this.$t('lastFeedBack'))
           return
         }
       }
@@ -208,26 +198,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-// $flat: #3f51b5;
-// .irs--flat .irs-bar {
-//   background-color: $flat;
-// }
-// .irs--flat .irs-from,
-// .irs--flat .irs-to,
-// .irs--flat .irs-single {
-//   background-color: $flat;
-// }
-// .irs--flat .irs-handle > i:first-child {
-//   background-color: $flat;
-// }
-
-// .irs--flat .irs-from:before,
-// .irs--flat .irs-to:before,
-// .irs--flat .irs-single:before {
-//   border-top-color: $flat;
-// }
-// * {
-//   touch-action: pan-x;
-// }
-</style>

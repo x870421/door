@@ -133,17 +133,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-// .ant-tag {
-//   border-radius: 1rem;
-// }
-
-// .ant-modal-header {
-//   background: #384893;
-// }
-// .ant-modal-title,
-// .ant-modal-close-icon {
-//   color: #fff;
-// }
-</style>

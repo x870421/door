@@ -23,17 +23,17 @@
           <ul>
             <li>
               <a-typography-text>
-                欄位名稱請與範例一致，並且每個欄位都必須存在
+                {{ this.$t('uploadList1') }}
               </a-typography-text>
             </li>
             <li>
               <a-typography-text>
-                person_id、username、email、card_type為必填
+                {{ this.$t('uploadList2') }}
               </a-typography-text>
             </li>
             <li>
               <a-typography-text>
-                card_type：請參考以下對應的數字填入
+                {{ this.$t('uploadList3') }}
               </a-typography-text>
             </li>
           </ul>

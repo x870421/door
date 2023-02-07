@@ -122,7 +122,6 @@ export default {
 <style>
 .ant-statistic-title {
   font-size: 16px;
-  /* color: rgba(0, 0, 0, 0.85); */
   color: #666;
 }
 </style>

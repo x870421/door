@@ -159,16 +159,6 @@
                 </div>
               </router-link>
             </div>
-            <!-- <div>
-              <router-link
-                style="color: black"
-                @click="toggleRWD"
-                to="/accessbasic/initANTI"
-                class="sidebar-link sidebar-child"
-              >
-                <div class="ps-5">{{ $t('initANTI') }}</div>
-              </router-link>
-            </div> -->
           </div>
         </div>
         <div>
