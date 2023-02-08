@@ -206,6 +206,7 @@
   "doorRelayAction": "Door relay action",
   "alarmOutputAction": "Alarm output action",
   "doorSensorDetectionTime": "Door sensor detection time",
+  "doorSensorAlarm": "Door Sensor Alarm",
   "doorSensorTimeoutAlarmMode": "Door sensor timeout alarm mode",
   "built-inRelayMode": "Built-in relay mode",
   "built-inRelayMode-label1": "內:門鎖  外1:門  外2:警報/響鈴",

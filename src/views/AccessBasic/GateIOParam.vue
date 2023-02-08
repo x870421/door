@@ -1,104 +1,129 @@
 <template>
-  <div class="p-sm-4 p-2" v-cloak>
+  <div class="p-4" v-cloak>
     <div class="card shadow-sm">
       <a-spin :spinning="spinning" tip="Loading...">
-        <a-form class="p-4 mx-auto gate-io-width" :model="door">
-          <div class="d-flex flex-wrap">
-            <a-form-item
-              :label="$t('doorRelayAction')"
-              name="dr_rel_time"
-              :help="$t('timeUnit')"
-            >
-              <a-radio-group
-                :options="[
-                  { label: this.$t('toggleMode'), value: 65535 },
-                  { label: this.$t('latchMode'), value: 0 },
-                  { label: this.$t('pulseMode'), value: 'on' }
-                ]"
-                v-model:value="door.dr_rel_time"
-              />
-            </a-form-item>
+        <a-form
+          ref="gateIOForm"
+          :label-col="labelCol"
+          :wrapper-col="{
+            span: 20
+          }"
+          class="p-4 mx-auto"
+          :model="door"
+        >
+          <a-form-item :label="$t('doorRelayAction')" name="dr_rel_time">
+            <a-radio-group
+              :options="[
+                { label: this.$t('toggleMode'), value: '65535' },
+                { label: this.$t('latchMode'), value: '0' },
+                { label: this.$t('pulseMode'), value: 'on' }
+              ]"
+              v-model:value="door.dr_rel_time"
+            />
+          </a-form-item>
+          <a-form-item
+            :label="$t('doorRelayTime')"
+            name="dr_number"
+            :help="$t('timeUnit')"
+            v-show="door.dr_rel_time === 'on'"
+            :rules="[{ required: true, message: '你好!' }]"
+          >
+            <a-input-number
+              v-model:value="door.dr_number"
+              :min="0"
+              :max="6000"
+              :placeholder="$t('inputTime')"
+              :precision="0"
+              :stringMode="true"
+            />
+          </a-form-item>
 
-            <div
-              class="input-margin"
-              :class="{ 'drrel-en-input-margin': locale === 'en' }"
-            >
-              <a-input-number
-                v-model:value="door.dr_number"
-                :min="0"
-                :max="6000"
-                v-show="door.dr_rel_time === 'on'"
-                :placeholder="$t('inputTime')"
-                :precision="0"
-                :stringMode="true"
-              />
-            </div>
-          </div>
+          <a-form-item :label="$t('alarmOutputAction')" name="dr_alarm_time">
+            <a-radio-group
+              :options="[
+                { label: this.$t('toggleMode'), value: '65535' },
+                { label: this.$t('latchMode'), value: '0' },
+                { label: this.$t('pulseMode'), value: 'on' }
+              ]"
+              v-model:value="door.dr_alarm_time"
+            />
+          </a-form-item>
 
-          <div class="d-flex flex-wrap">
-            <a-form-item
-              :label="$t('alarmOutputAction')"
-              name="dr_alarm_time"
-              :help="$t('timeUnit')"
-            >
-              <a-radio-group
-                :options="[
-                  { label: this.$t('toggleMode'), value: 65535 },
-                  { label: this.$t('latchMode'), value: 0 },
-                  { label: this.$t('pulseMode'), value: 'on' }
-                ]"
-                v-model:value="door.dr_alarm_time"
-              />
-            </a-form-item>
+          <!-- <div
+            class="input-margin"
+            :class="{ 'alarm-en-input-margin': locale === 'en' }"
+          ></div> -->
+          <a-form-item
+            :label="$t('alarmOutputTime')"
+            name="alarm_time"
+            :help="$t('timeUnit')"
+            v-if="door.dr_alarm_time === 'on'"
+            :rules="[{ required: true, message: '你好!' }]"
+          >
+            <a-input-number
+              v-model:value="door.alarm_time"
+              :min="0"
+              :max="6000"
+              :placeholder="$t('inputTime')"
+              :precision="0"
+              :stringMode="true"
+            />
+          </a-form-item>
 
-            <div
-              class="input-margin"
-              :class="{ 'alarm-en-input-margin': locale === 'en' }"
-            >
-              <a-input-number
-                v-model:value="door.alarm_time"
-                :min="0"
-                :max="6000"
-                v-show="door.dr_alarm_time === 'on'"
-                :placeholder="$t('inputTime')"
-                :precision="0"
-                :stringMode="true"
-              />
-            </div>
-          </div>
-
-          <a-form-item label="DoorSensor" name="door_sensor">
+          <a-form-item label="DoorSensor" name="dr_sen_mode">
             <a-select
-              v-model:value="door.door_sensor"
+              v-model:value="door.dr_sen_mode"
               :options="[
                 { value: '0', label: $t('doorSensor-label1') },
-                { value: '1', label: $t('doorSensor-label2') },
-                { value: '2', label: $t('doorSensor-label3') },
-                { value: '3', label: $t('doorSensor-label4') },
-                { value: '255', label: $t('doorSensor-label5') }
+                { value: '1', label: $t('doorSensor-label2') }
               ]"
               style="max-width: 350px"
             >
             </a-select>
           </a-form-item>
 
+          <a-form-item
+            :label="$t('doorSensorAlarm')"
+            name="dr_sen_alarm_enable"
+          >
+            <a-switch
+              :checkedValue="'1'"
+              :unCheckedValue="'0'"
+              v-model:checked="door.dr_sen_alarm_enable"
+            >
+              <template #checkedChildren><check-outlined /></template>
+              <template #unCheckedChildren><close-outlined /></template>
+            </a-switch>
+          </a-form-item>
           <a-form-item label="CaseSensor" name="door.case_sensor">
             <a-switch
-              :checkedValue="'0'"
-              :unCheckedValue="'255'"
+              :checkedValue="'1'"
+              :unCheckedValue="'0'"
               v-model:checked="door.case_sensor"
             >
               <template #checkedChildren><check-outlined /></template>
               <template #unCheckedChildren><close-outlined /></template>
             </a-switch>
           </a-form-item>
+          <a-form-item :label="$t('caseSensorAlarm')" name="case_alarm_mode">
+            <a-select
+              v-model:value="door.case_alarm_mode"
+              :options="[
+                { value: '1', label: 'Buzzer' },
+                { value: '2', label: 'AlarmRelay' },
+                { value: '3', label: $t('selectAll') }
+              ]"
+              style="max-width: 350px"
+            >
+            </a-select>
+          </a-form-item>
           <a-form-item
             :help="$t('timeUnit')"
             :label="$t('doorSensorDetectionTime')"
-            name="dr_sen_time"
+            name="door_unclosed_time"
           >
             <a-input-number
-              v-model:value="door.dr_sen_time"
+              v-model:value="door.door_unclosed_time"
               :min="0"
               :max="6000"
               :placeholder="$t('inputTime')"
@@ -109,10 +134,10 @@
           </a-form-item>
           <a-form-item
             :label="$t('doorSensorTimeoutAlarmMode')"
-            name="dr_alarm_mode"
+            name="door_unclosed_alarm"
           >
             <a-select
-              v-model:value="door.dr_alarm_mode"
+              v-model:value="door.door_unclosed_alarm"
               :options="[
                 { value: '1', label: 'Buzzer' },
                 { value: '2', label: 'AlarmRelay' },
@@ -135,20 +160,9 @@
               style="max-width: 350px"
             />
           </a-form-item>
-          <a-form-item :label="$t('caseSensorAlarm')" name="case_alarm_mode">
-            <a-select
-              v-model:value="door.case_alarm_mode"
-              :options="[
-                { value: '1', label: 'Buzzer' },
-                { value: '2', label: 'AlarmRelay' },
-                { value: '3', label: $t('selectAll') }
-              ]"
-              style="max-width: 350px"
-            >
-            </a-select>
-          </a-form-item>
-          <a-form-item name="submit" :wrapper-col="{ span: 20, offset: 3 }">
-            <a-button type="primary" @click.prevent="saveData">
+
+          <a-form-item name="submit" :wrapper-col="{ span: 20, offset: 8 }">
+            <a-button type="primary" @click.prevent="onCheck">
               {{ $t('submit') }}
             </a-button>
           </a-form-item>
@@ -157,7 +171,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
@@ -171,15 +184,17 @@ export default {
       door: {
         buildin_rel_mode: '0',
         case_alarm_mode: '1',
-        case_sensor: '255',
-        door_sensor: '255',
-        dr_alarm_mode: '1',
-        dr_alarm_time: '1000',
-        dr_rel_time: '1000',
-        dr_sen_time: '1000'
+        case_sensor: '0',
+        door_unclosed_alarm: '1',
+        door_unclosed_time: '0',
+        dr_alarm_time: '0',
+        dr_rel_time: '40',
+        dr_sen_alarm_enable: '0',
+        dr_sen_mode: '1'
       },
       spinning: false,
-      locale: ''
+      locale: '',
+      labelCol: { span: 8 }
     }
   },
   watch: {
@@ -192,6 +207,16 @@ export default {
   },
 
   methods: {
+    onCheck () {
+      this.$refs.gateIOForm
+        .validateFields()
+        .then(() => {
+          this.saveData()
+        })
+        .catch(() => {
+          this.$refs.gateIOForm.scrollToField()
+        })
+    },
     getData () {
       const drTime = this.door.dr_rel_time
       const alarmTime = this.door.dr_alarm_time
