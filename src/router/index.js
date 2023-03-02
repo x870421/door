@@ -20,7 +20,7 @@ const routes = [
       {
         path: 'person/importCSV',
         name: 'importCSV',
-        component: () => import('../views/ImportCSV.vue'),
+        component: () => import('../views/TEST2.vue'),
         meta: {
           breadcrumb: [
             { path: '/home', redirect: '/home/records', name: 'home' },

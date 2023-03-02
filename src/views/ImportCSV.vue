@@ -654,18 +654,16 @@ export default {
     }
   },
   created () {
-    Promise.all([this.getWeekList(), this.getHoliday(), this.getMakeupday()])
-      .then(([{ data: week }, { data: holiday }, { data: makeup }]) => {
-        this.weekList = week.on_dutiess
-        this.weekList.push({ week_id: 0, week_name: '不檢查' })
-
-        this.holidayList = holiday.holidays
-        this.holidayList.push({ holiday_id: 0, holiday_name: '不檢查' })
-
-        this.makeupList = makeup.makeups
-        this.makeupList.push({ makeup_id: 0, makeup_name: '不檢查' })
-      })
-      .catch((err) => err)
+    // Promise.all([this.getWeekList(), this.getHoliday(), this.getMakeupday()])
+    //   .then(([{ data: week }, { data: holiday }, { data: makeup }]) => {
+    //     this.weekList = week.on_dutiess
+    //     this.weekList.push({ week_id: 0, week_name: '不檢查' })
+    //     this.holidayList = holiday.holidays
+    //     this.holidayList.push({ holiday_id: 0, holiday_name: '不檢查' })
+    //     this.makeupList = makeup.makeups
+    //     this.makeupList.push({ makeup_id: 0, makeup_name: '不檢查' })
+    //   })
+    //   .catch((err) => err)
   }
 }
 </script>

@@ -26,14 +26,11 @@
         >
           {{ $t('exportCSV') }}
         </a-button>
-        <a-button
-          @click="modalupload.visible = true"
-          class="me-2 mb-2"
-          :title="$t('importCSV')"
-          type="primary"
-        >
-          {{ $t('importCSV') }}
-        </a-button>
+        <router-link to="/home/person/importCSV">
+          <a-button class="me-2 mb-2" :title="$t('importCSV')" type="primary">
+            {{ $t('importCSV') }}
+          </a-button>
+        </router-link>
       </div>
 
       <a-input-search
@@ -126,13 +123,13 @@
             </a>
           </template>
           <template v-else-if="column && column.key === 'created_since'">
-            <span :title="$d(new Date(record.created_since), 'short')">
-              {{ dayjs(record.created_since).format(dateFormat) }}
+            <span>
+              {{ dayjs(record.created_since).format(dateFormat) || '' }}
             </span>
           </template>
           <template v-else-if="column && column.key === 'valid_till'">
-            <span :title="$d(new Date(record.valid_till), 'short')">
-              {{ dayjs(record.valid_till).format(dateFormat) }}
+            <span>
+              {{ dayjs(record.valid_till).format(dateFormat) || '' }}
             </span>
           </template>
 
@@ -198,284 +195,185 @@ export default {
       setmodal: { loading: false, showPassword: false },
       personData: [
         {
-          authentication_type: 0,
           card_id: '3482219403839',
-          card_type: '03',
           created_since: '2023-01-04T00:00:00.000001',
           email: 'Chloe_Gibson31135@msi.com.tw',
-          holiday_id: '0',
           id: 1,
-          makeup_id: '0',
           person_id: '987979874',
           username: '莫詩婷',
-          valid_till: '2072-12-22T23:59:59.999999',
-          week_id: '0'
+          valid_till: '2072-12-22T23:59:59.999999'
         },
         {
-          authentication_type: 0,
           card_id: '6971156457878',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Emily_Heath78606@facebook.com',
-          holiday_id: '1',
           id: 2,
-          makeup_id: '1',
           person_id: '2328031936623',
           username: '龍俊賢',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 1,
           card_id: '2879334732127',
-          card_type: '81',
           created_since: '2022-01-01T00:00:00.000001',
           email: 'JamesPorter150@yahoo.com.tw',
-          holiday_id: '1',
           id: 3,
-          makeup_id: '1',
           person_id: '3800121499740',
           username: '李婉婷',
-          valid_till: '2022-12-26T23:59:59.999999',
-          week_id: '1'
+          valid_till: '2022-12-26T23:59:59.999999'
         },
         {
           authentication_type: 0,
           card_id: '8155781733851',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Michael_Garrison12788@msi.com.tw',
-          holiday_id: '1',
           id: 4,
-          makeup_id: '1',
           person_id: '2679200263218',
           username: '彭依婷',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '8812071689433',
-          card_type: '05',
           created_since: '2023-01-04T00:00:00',
           email: 'Evelyn_Schwartz85561@hotmail.com',
-          holiday_id: '1',
           id: 5,
-          makeup_id: '1',
-          person_id: '9962459555146',
+          person_id: '288954875558',
           username: '麻佳玲',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '7244418131601',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Kimberly_Johnson28473@ebay.com',
-          holiday_id: '1',
           id: 6,
-          makeup_id: '1',
           person_id: '3932495178544',
           username: '蘇瑋婷',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '1537420604093',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Eddie_Randall39236@facebook.com',
-          holiday_id: '1',
           id: 7,
-          makeup_id: '1',
           person_id: '4902559747619',
           username: '吳俊賢',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '9285949599513',
-          card_type: '05',
           created_since: '2023-01-04T00:00:00',
           email: 'Daniel_Ross87121@ebay.com',
-          holiday_id: '1',
           id: 8,
-          makeup_id: '1',
           person_id: '6923762985689',
           username: '王雅婷',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '7119878478651',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Gregory_Norton40595@aol.com',
-          holiday_id: '1',
           id: 9,
-          makeup_id: '1',
           person_id: '1563977615770',
           username: '張佳蓉',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '2838939917452',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'William_Reese21783@msn.com',
-          holiday_id: '1',
           id: 10,
-          makeup_id: '1',
           person_id: '5145942108898',
           username: '胡惠如',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '8417546116546',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Jerry_Pena40218@asus.com',
-          holiday_id: '1',
           id: 11,
-          makeup_id: '1',
           person_id: '2056581770779',
           username: '謝懿',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '8674404358986',
-          card_type: '88',
           created_since: '2023-01-04T00:00:00',
           email: 'Dwayne_Mcintosh21591@asus.com',
-          holiday_id: '1',
           id: 12,
-          makeup_id: '1',
           person_id: '5874787495435',
           username: '丁威廷',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '6319424685668',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Ann_Clements65511@gmail.com',
-          holiday_id: '1',
           id: 13,
-          makeup_id: '1',
           person_id: '6038176637274',
           username: '李傑克',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '2613163937311',
-          card_type: '88',
           created_since: '2023-01-04T00:00:00',
           email: 'Brenda_Williams23659@esunbank.com.tw',
-          holiday_id: '1',
           id: 14,
-          makeup_id: '1',
           person_id: '2585209295023',
           username: '蔡佳樺',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '5020514549449',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Sheri_Watkins24@yahoo.com.tw',
-          holiday_id: '1',
           id: 15,
-          makeup_id: '1',
           person_id: '7601017767455',
           username: '寇雅玲',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '6001592172896',
-          card_type: '05',
           created_since: '2023-01-04T00:00:00',
           email: 'John_Hart88528@msn.com',
-          holiday_id: '1',
           id: 16,
-          makeup_id: '1',
           person_id: '2859315791176',
           username: '申柏翰',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '7862800771343',
-          card_type: '05',
           created_since: '2023-01-04T00:00:00',
           email: 'Brandon_Warren29349@aol.com',
-          holiday_id: '1',
           id: 17,
-          makeup_id: '1',
           person_id: '3776387722336',
           username: '王怡安',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '8883579417903',
-          card_type: '81',
           created_since: '2023-01-04T00:00:00',
           email: 'Zachary_Ballard82334@aol.com',
-          holiday_id: '1',
           id: 18,
-          makeup_id: '1',
           person_id: '5689582101487',
           username: '王中山',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '4438484497638',
-          card_type: '88',
           created_since: '2023-01-04T00:00:00',
           email: 'Austin_Parrish12271@msi.com.tw',
-          holiday_id: '1',
           id: 19,
-          makeup_id: '1',
           person_id: '3857624033405',
           username: '黃佳慧',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '1'
+          valid_till: '2072-12-22T00:00:00'
         },
         {
-          authentication_type: 0,
           card_id: '8065823075804',
-          card_type: '88',
           created_since: '2023-01-04T00:00:00',
           email: 'Danielle_Smith52503@ebay.com',
-          holiday_id: '1',
           id: 20,
-          makeup_id: '1',
           person_id: '0749271919085',
           username: '胡羽',
-          valid_till: '2072-12-22T00:00:00',
-          week_id: '2'
+          valid_till: '2072-12-22T00:00:00'
         }
       ],
       renderData: [],
@@ -622,10 +520,16 @@ export default {
       message.success('匯入成功')
     },
     getData () {
-      this.renderData = JSON.parse(JSON.stringify(this.personData))
+      const data = sessionStorage.getItem('person')
+      if (!data) {
+        sessionStorage.setItem('person', JSON.stringify(this.personData))
+        this.renderData = JSON.parse(JSON.stringify(this.personData))
+      } else {
+        this.renderData = JSON.parse(data)
+      }
+      console.log(this.renderData)
     }
   },
-
   created () {
     this.getData()
   }
