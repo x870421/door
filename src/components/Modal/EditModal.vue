@@ -101,29 +101,7 @@
                 </template>
               </a-input>
             </a-form-item>
-            <a-form-item
-              name="card_type"
-              style="min-width: 200px"
-              :label="$t('cardType')"
-              :rules="[
-                {
-                  required: true,
-                  message: $t('cardTypeFeedback')
-                }
-              ]"
-            >
-              <a-select
-                v-model:value="person.card_type"
-                :placeholder="$t('cardTypeFeedback')"
-              >
-                <a-select-option
-                  v-for="card in cardData"
-                  :key="card.type"
-                  :value="card.type"
-                  >{{ card.name }}
-                </a-select-option>
-              </a-select>
-            </a-form-item>
+
             <a-form-item
               name="email"
               :label="$t('email')"
@@ -151,23 +129,6 @@
               </a-auto-complete>
             </a-form-item>
 
-            <a-form-item
-              :label="$t('comparisonMode')"
-              name="authentication_type"
-            >
-              <a-select
-                v-model:value="person.authentication_type"
-                :placeholder="$t('comparisonModeFeedBack')"
-                :options="[
-                  { value: 0, label: $t('swipeCard') },
-                  {
-                    value: 1,
-                    label: $t('swipeCard') + ' & ' + $t('photograph')
-                  }
-                ]"
-              >
-              </a-select>
-            </a-form-item>
             <a-form-item
               :rules="[
                 {
