@@ -49,7 +49,7 @@
           selectedRowKeys: selectedRowKeys,
           onChange: onSelectChange
         }"
-        :row-key="(record) => record.person_id"
+        :row-key="(record) => record.id"
         :data-source="renderData"
         :pagination="{
           size: 'middle',
@@ -412,6 +412,7 @@ export default {
           })
           this.renderData = JSON.parse(JSON.stringify(this.personData))
           message.success(this.$t('delete') + this.$t('success'), 10)
+          sessionStorage.setItem('person', JSON.stringify(this.personData))
         },
 
         onCancel () {}
@@ -433,6 +434,7 @@ export default {
         onOk: () => {
           this.personData.splice(index, 1)
           this.renderData = JSON.parse(JSON.stringify(this.personData))
+          sessionStorage.setItem('person', JSON.stringify(this.personData))
 
           message.success(this.$t('delete') + this.$t('success'), 10)
         },
@@ -483,6 +485,7 @@ export default {
         this.personData[index] = userdata
       }
       this.renderData = JSON.parse(JSON.stringify(this.personData))
+      sessionStorage.setItem('person', JSON.stringify(this.personData))
 
       message.success(userdata.username + ' ' + text + this.$t('success'), 10)
       this.setmodal.loading = false
@@ -527,7 +530,6 @@ export default {
       } else {
         this.renderData = JSON.parse(data)
       }
-      console.log(this.renderData)
     }
   },
   created () {
